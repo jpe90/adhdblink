@@ -1,0 +1,1 @@
+hackernews said this would cure my adhd
