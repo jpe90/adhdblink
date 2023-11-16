@@ -1,5 +1,6 @@
 #include <SDL.h>
 #include <chrono>
+#include "base.h"
 
 int
 main(int argc, char *argv[]) {
@@ -43,8 +44,8 @@ main(int argc, char *argv[]) {
         std::chrono::duration<float> elapsed = currentTime - startTime;
         float minutesPassed = elapsed.count() / 60.0f;
 
-        // interpolate from 2.5hz to 1hz
-        frequency = 2.5f + (1.0f - 2.5f) * minutesPassed;
+        // interpolate from 2.5hz to 1hz over the course of 60 minutes
+        frequency = ClampBottom(1.0f, 2.5f - (minutesPassed / 60.0f) * (2.5f - 1.0f));
 
         // Calculate color based on sine wave for smooth transition
         float sine =
