@@ -1,5 +1,5 @@
-CXX := g++
-CXXFLAGS := -Wall -Wextra `sdl2-config --cflags` -std=c++11
+CC := gcc
+CFLAGS := -Wall -Wextra `sdl2-config --cflags` -std=c99
 LDFLAGS := `sdl2-config --libs`
 
 TARGET := main
@@ -7,10 +7,10 @@ TARGET := main
 all: $(TARGET)
 
 $(TARGET): main.o
-	$(CXX) $^ -o $@ $(LDFLAGS)
+	$(CC) $^ -o $@ $(LDFLAGS)
 
-main.o: main.cpp
-	$(CXX) -c $< -o $@ $(CXXFLAGS)
+main.o: main.c
+	$(CC) -c $< -o $@ $(CFLAGS)
 
 clean:
 	rm -f $(TARGET) *.o
