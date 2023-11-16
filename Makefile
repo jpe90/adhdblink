@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -Wall -Wextra `sdl2-config --cflags`
+CXXFLAGS := -Wall -Wextra `sdl2-config --cflags` -std=c++11
 LDFLAGS := `sdl2-config --libs`
 
 TARGET := main
