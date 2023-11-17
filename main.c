@@ -1,8 +1,14 @@
 #include <SDL.h>
 #include <math.h>
 #include <time.h>
-#include "base.h"  
 #include <stdbool.h>
+
+#define Min(a,b) ((a) < (b) ? (a) : (b))
+#define Max(a,b) ((a) > (b) ? (a) : (b))
+#define Clamp(a,x,b) ((x) < (a) ? (a) : (x) > (b) ? (b) : (x))
+
+#define ClampTop(a,b) Min(a,b)
+#define ClampBottom(a,b) Max(a,b)
 
 int main() {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -10,7 +16,7 @@ int main() {
         return 1;
     }
 
-    SDL_Window *window = SDL_CreateWindow("Blinking Light", SDL_WINDOWPOS_CENTERED,
+    SDL_Window *window = SDL_CreateWindow("Blink", SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED, 50, 50, 0);
     if (!window) {
         SDL_Log("Unable to create window: %s", SDL_GetError());
